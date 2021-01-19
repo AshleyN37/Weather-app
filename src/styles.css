@@ -1,0 +1,59 @@
+.background {
+  background-image: linear-gradient(45deg, #202945, #3f475f);
+  margin: 30px auto;
+  padding: 30px 25px;
+  box-shadow: rgba(0, 0, 0, 0.4) 7px 7px 12px;
+  color: #f5f5f5;
+  border-radius: 10px;
+  width: 70%;
+}
+#search-button {
+  padding-left: 0;
+}
+.current-city {
+  margin: 25px 0;
+  text-align: center;
+  font-size: 65px;
+  font-weight: 700;
+  line-height: 80px;
+}
+.day-time,
+.current-weather,
+.precip-hum-wind {
+  font-size: 20px;
+  font-weight: 300;
+  color: #cad2d8;
+}
+.current-temperature,
+.weather {
+  font-size: 32px;
+  color: #ebebeb;
+}
+.current-temperature {
+  font-weight: 500;
+  line-height: 40px;
+  margin-top: 20px;
+  margin-bottom: 70px;
+}
+.container {
+  text-align: center;
+  font-size: 22px;
+}
+.days {
+  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #21b46f;
+}
+.weather {
+  margin-bottom: 15px;
+}
+.temperature {
+  font-weight: 500;
+}
+.low-temperature {
+  color: rgb(158, 149, 149);
+}
+p {
+  display: inline;
+}
