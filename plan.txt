@@ -9,8 +9,7 @@ JavaScript
     x    humidity
     x    wind
     x    uppercase string for city name - no, instead I changed it so the city name is gotten through the API
-
-    also need to update all these things when done through current location 
+    x    also need to update all these things when done through current location 
 
     Forecast
         Days of the week, weather picture, high and low temperatures
