@@ -74,6 +74,13 @@ function updateWindSpeed(response) {
     windElement.innerHTML = `${windSpeed}`;
 }
 
+// Update precipitation
+function updatePrecipitation(response) {
+    let precipitation = response.data.main.precipitation;
+    let precipitationElement = document.querySelector("#precipitation");
+    precipitationElement.innerHTML = `${precipitation}`;
+}
+// Update humidity
 function updateHumidity(response) {
     let humidity = response.data.main.humidity;
     let humidityElement = document.querySelector("#humidity");
@@ -92,7 +99,7 @@ function getCity(event) {
     axios.get(`${apiUrl}`).then(showTemperature);
     axios.get(`${apiUrl}`).then(updateDescription);
     axios.get(`${apiUrl}`).then(updateWindSpeed);
-    //axios.get(`${apiUrl}`).then(updatePrecipitation);
+    axios.get(`${apiUrl}`).then(updatePrecipitation);
     axios.get(`${apiUrl}`).then(updateHumidity);
 
 
