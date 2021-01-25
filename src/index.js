@@ -48,17 +48,11 @@ form.addEventListener("submit", displayCityName);
 function showTemperature(response) {
     let info = response.data;
     console.log(info);
-
-
-
-
-
-
     let temperature = Math.round(response.data.main.temp);
     let temperatureElement = document.querySelector("#temp-number");
     temperatureElement.innerHTML = `${temperature}`;
+    
 }
-
 
 // Update weather description
 function updateDescription(response) {
@@ -74,12 +68,14 @@ function updateWindSpeed(response) {
     windElement.innerHTML = `${windSpeed}`;
 }
 
+
 // Update precipitation
-function updatePrecipitation(response) {
-    let precipitation = response.data.main.precipitation;
-    let precipitationElement = document.querySelector("#precipitation");
-    precipitationElement.innerHTML = `${precipitation}`;
+function updateFeelsLike(response) {
+    let feelsLikeTemp = Math.round(response.data.main.feels_like);
+    let feelsLikeElement = document.querySelector("#feels-like");
+    feelsLikeElement.innerHTML = `${feelsLikeTemp}`;
 }
+
 // Update humidity
 function updateHumidity(response) {
     let humidity = response.data.main.humidity;
@@ -99,7 +95,7 @@ function getCity(event) {
     axios.get(`${apiUrl}`).then(showTemperature);
     axios.get(`${apiUrl}`).then(updateDescription);
     axios.get(`${apiUrl}`).then(updateWindSpeed);
-    axios.get(`${apiUrl}`).then(updatePrecipitation);
+    //axios.get(`${apiUrl}`).then(updateFeelsLike);
     axios.get(`${apiUrl}`).then(updateHumidity);
 
 
