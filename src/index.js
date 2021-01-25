@@ -1,9 +1,5 @@
 // display current day and time
-// need to format date - so hours and minutes format correctly when less than 10 - use a function
-
-
 function formatTime(now) {
-    
     let days = [
         "Sunday", 
         "Monday", 
@@ -12,7 +8,8 @@ function formatTime(now) {
         "Thursday", 
         "Friday", 
         "Saturday"]
-        let day = days[now.getDay()];
+        
+    let day = days[now.getDay()];
     let hours = now.getHours();
     let minutes = now.getMinutes();
     if (minutes < 10) {
@@ -29,76 +26,100 @@ function formatTime(now) {
 
 let dayTime = document.querySelector(".day-time");
 dayTime.innerHTML = (formatTime(new Date));
-console.log(formatTime(new Date));
 
     
-    
-    
-    
-
-
-
-
-
-    
-
-    
-
-
-
-    
-    
-
-
-    
-
-    
-
-    
-    
-
-    
-    
-    // Search for a city and update city name once searched for
-    function displayCityName(event) {
-        event.preventDefault();
-        let searchInput = document.querySelector("#search-input");
-        let h1 = document.querySelector(".current-city");
-        if(searchInput.value) {
-            h1.innerHTML = `${searchInput.value}`;
-        } else {
-            h1.innerHTML = `Please enter a city`
-        }
+// Search for a city and update city name once searched for
+function displayCityName(event) {
+    event.preventDefault();
+    let searchInput = document.querySelector("#search-input");
+    let h1 = document.querySelector(".current-city");
+    if(searchInput.value) {
+        h1.innerHTML = `${searchInput.value}`;
+    } else {
+        h1.innerHTML = `Please enter a city`
     }
-    let form = document.querySelector("#search-form");
-    form.addEventListener("submit", displayCityName);
+}
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", displayCityName);
 
 
 
-    // Updates temperature in Fahrenheit for the current location
-    function showTemperature(response) {
-        let temperature = Math.round(response.data.main.temp);
-        let temperatureElement = document.querySelector("#temp-number");
-        temperatureElement.innerHTML = `${temperature}`;
-    }
+// Updates temperature in Fahrenheit for the city that is searched
+function showTemperature(response) {
+    let info = response.data;
+    console.log(info);
+
+
+
+
+
+
+    let temperature = Math.round(response.data.main.temp);
+    let temperatureElement = document.querySelector("#temp-number");
+    temperatureElement.innerHTML = `${temperature}`;
+}
+
+
+// Update weather description
+function updateDescription(response) {
+    let weather = response.data.weather[0].main;
+    let weatherElement = document.querySelector(".current-weather");
+    weatherElement.innerHTML = `${weather}`;
+}
+
+// Update wind speed
+function updateWindSpeed(response) {
+    let windSpeed = Math.round(response.data.wind.speed);
+    let windElement = document.querySelector("#wind-speed");
+    windElement.innerHTML = `${windSpeed}`;
+}
+
+function updateHumidity(response) {
+    let humidity = response.data.main.humidity;
+    let humidityElement = document.querySelector("#humidity");
+    humidityElement.innerHTML = `${humidity}`;
+
+}
     
-    
-   // Gets the city from search and accesses weather api 
-    function getCity(event) {
-        event.preventDefault
-        let search = document.querySelector("#search-input");
-        let city = `${search.value}`;
-        let apiKey = "5cb1aa65264597e34c41305199c5cf9e";
-        let units = `imperial`;
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-        axios.get(`${apiUrl}`).then(showTemperature);
+// Gets the city from search and accesses weather api 
+function getCity(event) {
+    event.preventDefault
+    let search = document.querySelector("#search-input");
+    let city = `${search.value}`;
+    let apiKey = "5cb1aa65264597e34c41305199c5cf9e";
+    let units = `imperial`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    axios.get(`${apiUrl}`).then(showTemperature);
+    axios.get(`${apiUrl}`).then(updateDescription);
+    axios.get(`${apiUrl}`).then(updateWindSpeed);
+    //axios.get(`${apiUrl}`).then(updatePrecipitation);
+    axios.get(`${apiUrl}`).then(updateHumidity);
 
-    }
+
+}
           
-    let searchForm = document.querySelector("#search-form");
-    searchForm.addEventListener("submit", getCity);
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", getCity);
     
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Current Location button - when clicked, searches current location and updates city name and temperature
 function getPosition() {
@@ -142,49 +163,6 @@ currentLocation.addEventListener("click", getPosition);
 
 
 /*
-
-
-<!--
-👨‍🏫Your task
-On your project, when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city.
-
-use api
-ajax
-get into the innerHTML of the temperature and change it
-change name of city using innerHTML
-
-Extras:
-update weather   -      response.data.weather[0].main;
-
-update picture
-update precipitation
-update humidity
-update wind
-
-
-search city and state for the USA
-
-🙀 Bonus point:
-Add a Current Location button. When clicking on it, it uses the Geolocation API to get your GPS coordinates and display and the city and current temperature using the OpenWeather API.
--->
-
-
-
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
             function convertToCelsius(event) {
     event.preventDefault();
     let c = document.querySelector("#temp-number");
@@ -204,8 +182,11 @@ farenheit.addEventListener("click", convertToFarenheit);
 
 
 
+ 
 
-if you need help look at suggested solution and video solution from week 5 homework https://www.shecodes.io/learn/workshops/268/units/28/challenges/36/solution
 
+        let city = response.data.main.name;
+    let currentCity = document.querySelector(".current-city");
+    currentCity.innerHTML = `${city}`
 
 */
