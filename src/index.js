@@ -28,21 +28,11 @@ let dayTime = document.querySelector(".day-time");
 dayTime.innerHTML = (formatTime(new Date));
 
     
-// Search for a city and update city name once searched for
-function displayCityName(event) {
-    event.preventDefault();
-    let searchInput = document.querySelector("#search-input");
-    let h1 = document.querySelector(".current-city");
-    if(searchInput.value) {
-        h1.innerHTML = `${searchInput.value}`;
-    } else {
-        h1.innerHTML = `Please enter a city`
-    }
+
+
+function updateCityName(response) {
+    document.querySelector(".current-city").innerHTML = response.data.name;
 }
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", displayCityName);
-
-
 
 // Updates temperature in Fahrenheit for the city that is searched
 function showTemperature(response) {
@@ -83,7 +73,7 @@ function updateHumidity(response) {
     humidityElement.innerHTML = `${humidity}`;
 
 }
-    
+
 // Gets the city from search and accesses weather api 
 function getCity(event) {
     event.preventDefault
@@ -92,19 +82,20 @@ function getCity(event) {
     let apiKey = "5cb1aa65264597e34c41305199c5cf9e";
     let units = `imperial`;
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    axios.get(`${apiUrl}`).then(updateCityName);
     axios.get(`${apiUrl}`).then(showTemperature);
     axios.get(`${apiUrl}`).then(updateDescription);
     axios.get(`${apiUrl}`).then(updateWindSpeed);
-    //axios.get(`${apiUrl}`).then(updateFeelsLike);
+    axios.get(`${apiUrl}`).then(updateFeelsLike);
     axios.get(`${apiUrl}`).then(updateHumidity);
-
-
+    
+    
 }
-          
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", getCity);
-    
-    
+
+
 
 
 
@@ -149,28 +140,43 @@ function displayTemperature(response) {
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", getPosition);
-            
 
-            
-            
-
-            
-            
 
             
 
 
             
 
-            
+
+
+
+
+
+
+
 
 
 /*
-            function convertToCelsius(event) {
+// Search for a city and update city name once searched for
+function displayCityName(event) {
+    event.preventDefault();
+    let searchInput = document.querySelector("#search-input");
+    let h1 = document.querySelector(".current-city");
+    if(searchInput.value) {
+        h1.innerHTML = `${searchInput.value}`;
+    } else {
+        h1.innerHTML = `Please enter a city`
+    }
+}
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", displayCityName);
+
+
+function convertToCelsius(event) {
     event.preventDefault();
     let c = document.querySelector("#temp-number");
     c.innerHTML = "5";
-
+    
 }
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", convertToCelsius);
@@ -188,8 +194,10 @@ farenheit.addEventListener("click", convertToFarenheit);
  
 
 
-        let city = response.data.main.name;
+        let city = response.data.name;
     let currentCity = document.querySelector(".current-city");
     currentCity.innerHTML = `${city}`
+    document.
+
 
 */
