@@ -1,15 +1,16 @@
 JavaScript
     update 
     x    time - so it formats correctly - done - need to double check late at different time
-        F to C conversion
+        F to C conversion - also units for wind speed mph or m/s
     x    weather description
-        picture
+    x    picture
     ?    precipitation - having trouble finding this, come back to this ???
     x    feels like temperature
     x    humidity
     x    wind
-        units for wind speed - mph or m/s
     x    uppercase string for city name - no, instead I changed it so the city name is gotten through the API
+
+    also need to update all these things when done through current location 
 
     Forecast
         Days of the week, weather picture, high and low temperatures
