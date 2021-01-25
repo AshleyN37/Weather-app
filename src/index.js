@@ -28,50 +28,30 @@ let dayTime = document.querySelector(".day-time");
 dayTime.innerHTML = (formatTime(new Date));
 
     
-
-
-function updateCityName(response) {
-    document.querySelector(".current-city").innerHTML = response.data.name;
-}
-
 // Updates temperature in Fahrenheit for the city that is searched
-function showTemperature(response) {
+function showWeatherInfo(response) {
     let info = response.data;
     console.log(info);
-    let temperature = Math.round(response.data.main.temp);
-    let temperatureElement = document.querySelector("#temp-number");
-    temperatureElement.innerHTML = `${temperature}`;
     
-}
-
-// Update weather description
-function updateDescription(response) {
-    let weather = response.data.weather[0].main;
+    
+    let currentCity = document.querySelector(".current-city");
+    let temperatureElement = document.querySelector("#temp-number");
     let weatherElement = document.querySelector(".current-weather");
-    weatherElement.innerHTML = `${weather}`;
-}
-
-// Update wind speed
-function updateWindSpeed(response) {
-    let windSpeed = Math.round(response.data.wind.speed);
     let windElement = document.querySelector("#wind-speed");
-    windElement.innerHTML = `${windSpeed}`;
-}
-
-
-// Update precipitation
-function updateFeelsLike(response) {
-    let feelsLikeTemp = Math.round(response.data.main.feels_like);
     let feelsLikeElement = document.querySelector("#feels-like");
-    feelsLikeElement.innerHTML = `${feelsLikeTemp}`;
-}
-
-// Update humidity
-function updateHumidity(response) {
-    let humidity = response.data.main.humidity;
     let humidityElement = document.querySelector("#humidity");
-    humidityElement.innerHTML = `${humidity}`;
-
+    let weatherIconElement = document.querySelector("#weather-icon");
+    
+    
+    currentCity.innerHTML = response.data.name;
+    temperatureElement.innerHTML = Math.round(response.data.main.temp);
+    weatherElement.innerHTML = response.data.weather[0].main;
+    windElement.innerHTML = Math.round(response.data.wind.speed);
+    feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
+    humidityElement.innerHTML = response.data.main.humidity;
+    weatherIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    weatherIconElement.setAttribute("alt", response.data.weather[0].description);
+    
 }
 
 // Gets the city from search and accesses weather api 
@@ -82,12 +62,8 @@ function getCity(event) {
     let apiKey = "5cb1aa65264597e34c41305199c5cf9e";
     let units = `imperial`;
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(`${apiUrl}`).then(updateCityName);
-    axios.get(`${apiUrl}`).then(showTemperature);
-    axios.get(`${apiUrl}`).then(updateDescription);
-    axios.get(`${apiUrl}`).then(updateWindSpeed);
-    axios.get(`${apiUrl}`).then(updateFeelsLike);
-    axios.get(`${apiUrl}`).then(updateHumidity);
+    axios.get(`${apiUrl}`).then(showWeatherInfo);
+
     
     
 }
