@@ -1,7 +1,29 @@
 
 // display current day and time
 // need to format date - so hours and minutes format correctly when less than 10 - use a function
+
+
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+}
+
+/*
+
+console.log(formatAMPM(new Date));
+function formatTime(now) {
+    return (now.getMinutes() < 10 ? '0' : '') 
+}
+
+
 let now = new Date();
+console.log(formatTime(now));
 let dayTime = document.querySelector(".day-time");
 
 let days = [
@@ -13,10 +35,36 @@ let days = [
     "Friday", 
     "Saturday"]
     let day = days[now.getDay()];
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
+
+    let hours = now.getHours(formatTime);
+    let minutes = now.getMinutes(formatTime);
     
     dayTime.innerHTML = `${day} ${hours}:${minutes}`;
+    */
+    
+    
+
+
+
+
+
+    
+
+    
+
+
+
+    
+    
+
+
+    
+
+    
+
+    
+    
+
     
     
     // Search for a city and update city name once searched for
@@ -42,7 +90,7 @@ let days = [
         temperatureElement.innerHTML = `${temperature}`;
     }
     
- 
+    
    // Gets the city from search and accesses weather api 
     function getCity(event) {
         event.preventDefault
@@ -86,23 +134,29 @@ function displayTemperature(response) {
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", getPosition);
             
+
             
             
+
             
             
+
             
+
+
             
+
             
-            
-            
-            
-            
-            
-            
-            
-            
+
+
 /*
 
+if (minutes < 10) {
+    minutes = `0${minutes}`
+}
+if (hours < 10) {
+    hours = `0${hours}`
+}
 
 <!--
 👨‍🏫Your task

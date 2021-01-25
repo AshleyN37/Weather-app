@@ -1,0 +1,23 @@
+JavaScript
+    update 
+        time - so it formats correctly
+        F to C conversion
+        weather description
+        picture
+        precipitation
+        humidity
+        wind
+    Forecast
+        Days of the week, weather picture, high and low temperatures
+
+
+
+HTML / CSS
+    Formatting so it works when the window gets smaller or for in mobile
+
+
+
+
+ Optional ideas
+    change color scheme - light, dark, blue?
+    temperature for next few hours, precipitation, wind speed for the next few hours
