@@ -1,4 +1,4 @@
-// show current day and time
+// Shows current day and time
 function formatTime(now) {
     let days = [
         "Sunday", 
@@ -23,12 +23,12 @@ function formatTime(now) {
     return time
 }
 
-
 let dayTime = document.querySelector(".day-time");
 dayTime.innerHTML = (formatTime(new Date));
 
+
     
-// Updates temperature in Fahrenheit for the city that is searched
+// Updates temperature and other weather information for the city that is searched
 function showWeatherInfo(response) {
     console.log(response.data);
     

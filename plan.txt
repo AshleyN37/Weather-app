@@ -2,6 +2,7 @@ JavaScript
     update 
     x    time - so it formats correctly - done - need to double check late at different time
         F to C conversion - also units for wind speed mph or m/s
+        update time so it is 12 hour, and add AM or PM
     x    weather description
     x    picture
     ?    precipitation - having trouble finding this, come back to this ???
@@ -13,6 +14,10 @@ JavaScript
 
     Forecast
         Days of the week, weather picture, high and low temperatures
+
+
+
+
 
     cities and states 
     api.openweathermap.org/data/2.5/weather?q={city name},{state code}&appid={API key}
