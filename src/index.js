@@ -59,7 +59,7 @@ function getCity(event) {
     event.preventDefault;
     let city = document.querySelector("#search-input");
     let apiKey = "5cb1aa65264597e34c41305199c5cf9e";
-    let units = `imperial`;
+    let units = "imperial";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeatherInfo);
 }
@@ -77,10 +77,10 @@ function convertToFarenheit(event) {
     temperatureElement.innerHTML = Math.round(farenheitTemperature);
 }
 
-let farenheitTemperature = null;
-
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", getCity);
+
+let farenheitTemperature = null;
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", convertToCelsius);

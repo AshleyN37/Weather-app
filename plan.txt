@@ -1,6 +1,8 @@
 JavaScript
     update 
     x    time - so it formats correctly - done - need to double check late at different time
+
+    
         F to C conversion - also units for wind speed mph or m/s
         update time so it is 12 hour, and add AM or PM
     x    weather description
