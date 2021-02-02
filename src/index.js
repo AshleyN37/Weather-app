@@ -27,11 +27,12 @@ let dayTime = document.querySelector(".day-time");
 dayTime.innerHTML = (formatTime(new Date));
 
 
+
+
     
 // Updates temperature and other weather information for the city that is searched
 function showWeatherInfo(response) {
     console.log(response.data);
-    
     
     let currentCity = document.querySelector(".current-city");
     let temperatureElement = document.querySelector("#temp-number");
@@ -41,7 +42,7 @@ function showWeatherInfo(response) {
     let humidityElement = document.querySelector("#humidity");
     let weatherIconElement = document.querySelector("#weather-icon");
 
-    farenheitTemperature = response.data.main.temp;
+    //farenheitTemperature = response.data.main.temp;
     
     
     currentCity.innerHTML = response.data.name;
@@ -54,15 +55,23 @@ function showWeatherInfo(response) {
     weatherIconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+let apiKey = "5cb1aa65264597e34c41305199c5cf9e";
+let city = "New York";
+let units = "imperial";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+axios.get(apiUrl).then(showWeatherInfo);
+
+//document.querySelector("#search-input");
 // Gets the city from search and accesses weather api 
-function getCity(event) {
-    event.preventDefault;
-    let city = document.querySelector("#search-input");
-    let apiKey = "5cb1aa65264597e34c41305199c5cf9e";
-    let units = "imperial";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(showWeatherInfo);
-}
+//function getCity(event) {
+//    event.preventDefault;
+//}
+
+//let searchForm = document.querySelector("#search-form");
+//searchForm.addEventListener("submit", getCity);
+
+
+/*
 
 function convertToCelsius(event) {
     event.preventDefault();
@@ -77,8 +86,6 @@ function convertToFarenheit(event) {
     temperatureElement.innerHTML = Math.round(farenheitTemperature);
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", getCity);
 
 let farenheitTemperature = null;
 

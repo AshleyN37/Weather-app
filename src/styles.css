@@ -7,8 +7,9 @@
   border-radius: 10px;
   width: 70%;
 }
-#search-button {
-  padding-left: 0;
+#search-button,
+#current-location-button {
+  padding: 0;
 }
 .current-city {
   margin: 25px 0;
