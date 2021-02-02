@@ -1,6 +1,6 @@
 .background {
   background-image: linear-gradient(45deg, #455995, #4f5977, #3f475f, #202945);
-  margin: 30px auto;
+  margin: 10px auto;
   padding: 30px 25px;
   box-shadow: rgba(0, 0, 0, 0.4) 7px 7px 12px;
   color: #f5f5f5;
@@ -12,7 +12,7 @@
   padding: 0;
 }
 .current-city {
-  margin: 25px 0;
+  margin: 20px 0;
   text-align: center;
   font-size: 65px;
   font-weight: 700;
@@ -41,8 +41,8 @@
 .current-temperature {
   font-weight: 500;
   line-height: 40px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 7px;
+  margin-bottom: 15px;
   margin-left: 0 auto;
 }
 .container {
@@ -60,6 +60,7 @@
 }
 .temperature {
   font-weight: 500;
+  padding-bottom: 16px;
 }
 .low-temperature {
   color: rgb(158, 149, 149);
