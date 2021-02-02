@@ -32,7 +32,7 @@ dayTime.innerHTML = (formatTime(new Date));
     
 // Updates temperature and other weather information for the city that is searched
 function showWeatherInfo(response) {
-    console.log(response.data);
+    //console.log(response.data);
     
     let currentCity = document.querySelector(".current-city");
     let temperatureElement = document.querySelector("#temp-number");
@@ -55,24 +55,27 @@ function showWeatherInfo(response) {
     weatherIconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let apiKey = "5cb1aa65264597e34c41305199c5cf9e";
-let city = "Washington DC";
-let units = "imperial";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-axios.get(apiUrl).then(showWeatherInfo);
+// Searches for city and gets data from the API
+function search(city) {
+    let apiKey = "5cb1aa65264597e34c41305199c5cf9e";
+    let units = "imperial";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(showWeatherInfo);
 
-//document.querySelector("#search-input");
-// Gets the city from search and accesses weather api 
-//function getCity(event) {
-//    event.preventDefault;
-//}
+}
+function submitCity(event) {
+    event.preventDefault();
+    let searchInput = document.querySelector("#search-input");
+    search(searchInput.value);
+}
 
-//let searchForm = document.querySelector("#search-form");
-//searchForm.addEventListener("submit", getCity);
+search("Washington DC");
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", submitCity);
 
 
 
-
+// Converts Farenheit to Celsius
 function convertToCelsius(event) {
     event.preventDefault();
     let celsiusTemperature = Math.round((farenheitTemperature - 32) * 5/9);
