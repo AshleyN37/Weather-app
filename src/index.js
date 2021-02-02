@@ -32,7 +32,7 @@ dayTime.innerHTML = (formatTime(new Date));
     
 // Updates temperature and other weather information for the city that is searched
 function showWeatherInfo(response) {
-    //console.log(response.data);
+    console.log(response.data);
     
     let currentCity = document.querySelector(".current-city");
     let temperatureElement = document.querySelector("#temp-number");
@@ -43,6 +43,7 @@ function showWeatherInfo(response) {
     let weatherIconElement = document.querySelector("#weather-icon");
 
     farenheitTemperature = response.data.main.temp;
+    milesPerHour = response.data.wind.speed;
     
     
     currentCity.innerHTML = response.data.name;
@@ -89,14 +90,43 @@ function convertToFarenheit(event) {
     temperatureElement.innerHTML = Math.round(farenheitTemperature);
 }
 
+function convertToKilometerPerHour(event) {
+    event.preventDefault();
+    let kilometerPerHour = Math.round(milesPerHour * 1.609);
+    let windSpeedElement = document.querySelector("#wind-speed");
+    let metricUnit = document.querySelector("#wind-unit");
+    windSpeedElement.innerHTML = `${kilometerPerHour}`;
+    metricUnit.innerHTML = "km/h"
+}
+
+function convertToMilesPerHour(event) {
+    event.preventDefault();
+    let windSpeedElement = document.querySelector("#wind-speed");
+    let imperialUnit = document.querySelector("#wind-unit");
+    windSpeedElement.innerHTML = Math.round(milesPerHour);
+    imperialUnit.innerHTML = "mph";   
+}
+
 
 let farenheitTemperature = null;
+let milesPerHour = null;
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 let farenheitLink = document.querySelector("#farenheit");
 farenheitLink.addEventListener("click", convertToFarenheit);
+
+
+let metricWindConversion = document.querySelector("#celsius");
+metricWindConversion.addEventListener("click", convertToKilometerPerHour);
+
+
+let imperialWindConversion = document.querySelector("#farenheit");
+imperialWindConversion.addEventListener("click", convertToMilesPerHour);
+
+
+
 
 
 
