@@ -2,13 +2,18 @@ JavaScript
     update 
     x    time - so it formats correctly - done - need to double check late at different time
 
-    
-        F to C conversion - also units for wind speed mph or m/s
+    #5369af, #4f5977
+    2c3960
+    33416d
+    3f475f
+
+    #5369af, 4f5977, #202945, #3f475f
+    x    F to C conversion - also units for wind speed mph or m/s
         update time so it is 12 hour, and add AM or PM
     x    weather description
     x    picture
     ?    precipitation - having trouble finding this, come back to this ???
-    x    feels like temperature
+        feels like temperature ---- have to get this to convert too
     x    humidity
     x    wind
     x    uppercase string for city name - no, instead I changed it so the city name is gotten through the API

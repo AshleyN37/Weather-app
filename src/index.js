@@ -79,6 +79,8 @@ form.addEventListener("submit", submitCity);
 // Converts Farenheit to Celsius
 function convertToCelsius(event) {
     event.preventDefault();
+    farenheitLink.classList.remove("active");
+    celsiusLink.classList.add("active");
     let celsiusTemperature = Math.round((farenheitTemperature - 32) * 5/9);
     let temperatureElement = document.querySelector("#temp-number");
     temperatureElement.innerHTML = celsiusTemperature;
@@ -86,6 +88,8 @@ function convertToCelsius(event) {
 
 function convertToFarenheit(event) {
     event.preventDefault();
+    celsiusLink.classList.remove("active");
+    farenheitLink.classList.add("active");
     let temperatureElement = document.querySelector("#temp-number");
     temperatureElement.innerHTML = Math.round(farenheitTemperature);
 }
