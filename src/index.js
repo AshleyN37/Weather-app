@@ -27,13 +27,9 @@ let dayTime = document.querySelector(".day-time");
 dayTime.innerHTML = (formatTime(new Date));
 
 
-
-
     
 // Updates temperature and other weather information for the city that is searched
-function showWeatherInfo(response) {
-    console.log(response.data);
-    
+function showWeatherInfo(response) {  
     let currentCity = document.querySelector(".current-city");
     let temperatureElement = document.querySelector("#temp-number");
     let weatherElement = document.querySelector(".current-weather");
@@ -43,8 +39,8 @@ function showWeatherInfo(response) {
     let weatherIconElement = document.querySelector("#weather-icon");
 
     farenheitTemperature = response.data.main.temp;
+    farenheitFeelsLikeTemperature = response.data.main.feels_like;
     milesPerHour = response.data.wind.speed;
-    
     
     currentCity.innerHTML = response.data.name;
     temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -76,14 +72,18 @@ form.addEventListener("submit", submitCity);
 
 
 
-// Converts Farenheit to Celsius
+// Converts Farenheit to Celsius and mph to km/h
 function convertToCelsius(event) {
     event.preventDefault();
     farenheitLink.classList.remove("active");
     celsiusLink.classList.add("active");
     let celsiusTemperature = Math.round((farenheitTemperature - 32) * 5/9);
+    let celsiusFeelsLike = Math.round((farenheitFeelsLikeTemperature - 32) * 5/9);
     let temperatureElement = document.querySelector("#temp-number");
+    let feelsLikeElement = document.querySelector("#feels-like");
     temperatureElement.innerHTML = celsiusTemperature;
+    feelsLikeElement.innerHTML = celsiusFeelsLike;
+    
 }
 
 function convertToFarenheit(event) {
@@ -91,7 +91,10 @@ function convertToFarenheit(event) {
     celsiusLink.classList.remove("active");
     farenheitLink.classList.add("active");
     let temperatureElement = document.querySelector("#temp-number");
+    let feelsLikeElement = document.querySelector("#feels-like");
     temperatureElement.innerHTML = Math.round(farenheitTemperature);
+    feelsLikeElement.innerHTML = Math.round(farenheitFeelsLikeTemperature);
+
 }
 
 function convertToKilometerPerHour(event) {
@@ -113,6 +116,7 @@ function convertToMilesPerHour(event) {
 
 
 let farenheitTemperature = null;
+let farenheitFeelsLikeTemperature = null;
 let milesPerHour = null;
 
 let celsiusLink = document.querySelector("#celsius");
@@ -131,43 +135,6 @@ imperialWindConversion.addEventListener("click", convertToMilesPerHour);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
 
 // Current Location button - when clicked, searches current location and updates city name and temperature
 function getPosition() {
@@ -205,39 +172,5 @@ function displayWeatherInfo(response) {
     weatherIconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let currentLocation = document.querySelector("#current-location");
+let currentLocation = document.querySelector("#current-location-button");
 currentLocation.addEventListener("click", getPosition);
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-    
-}
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", convertToCelsius);
-
-function convertToFarenheit(event) {
-    event.preventDefault();
-    let f = document.querySelector("#temp-number");
-    f.innerHTML = "42";
-}
-let farenheit = document.querySelector("#farenheit");
-farenheit.addEventListener("click", convertToFarenheit);
-
-
-
- 
-
-
-*/
