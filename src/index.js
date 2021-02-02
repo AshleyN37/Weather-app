@@ -42,7 +42,7 @@ function showWeatherInfo(response) {
     let humidityElement = document.querySelector("#humidity");
     let weatherIconElement = document.querySelector("#weather-icon");
 
-    //farenheitTemperature = response.data.main.temp;
+    farenheitTemperature = response.data.main.temp;
     
     
     currentCity.innerHTML = response.data.name;
@@ -56,7 +56,7 @@ function showWeatherInfo(response) {
 }
 
 let apiKey = "5cb1aa65264597e34c41305199c5cf9e";
-let city = "New York";
+let city = "Washington DC";
 let units = "imperial";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 axios.get(apiUrl).then(showWeatherInfo);
@@ -71,7 +71,7 @@ axios.get(apiUrl).then(showWeatherInfo);
 //searchForm.addEventListener("submit", getCity);
 
 
-/*
+
 
 function convertToCelsius(event) {
     event.preventDefault();
