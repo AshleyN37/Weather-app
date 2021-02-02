@@ -25,9 +25,14 @@
   font-weight: 300;
   color: #cad2d8;
 }
+.precip-hum-wind {
+  margin-left: 50px;
+}
+
 .current-temperature {
   color: #ebebeb;
   font-size: 65px;
+  margin-left: 55px;
 }
 .weather {
   font-size: 32px;
@@ -36,8 +41,9 @@
 .current-temperature {
   font-weight: 500;
   line-height: 40px;
-  margin-top: 20px;
-  margin-bottom: 70px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 0 auto;
 }
 .container {
   text-align: center;

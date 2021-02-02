@@ -38,36 +38,18 @@
             Alexandria, VA
         </h1> 
 
-        <div class="row todays-forecast">
-            <div class="col-lg">
-            </div>
-            <div class="col-4">
+        <div class="row justify-content-center todays-forecast">
+           
+            <div class="col-3">
                 <div class="day-time">
                     Tuesday 3:00
                 </div>
                 <div class="current-weather">
                     Partly Cloudy
                 </div>
-
-
-                <div class="current-temperature">
-                    <img src="" alt="" id="weather-icon">
-                    <p id="temp-number">
-                        42 
-                    </p>
-                    <sup id="units"> 
-                        <a href="#" id="farenheit" class="active">
-                            °F 
-                        </a> | 
-                        <a href="#" id="celsius">
-                            °C
-                        </a>
-                </sup>
-                </div>
-
-                
             </div>
-            <div class="col-5 precip-hum-wind">
+            
+            <div class="col-3 precip-hum-wind">
                 <div>
                     Feels Like: <span id="feels-like">39</span>°
                 </div>
@@ -78,10 +60,30 @@
                     Wind: <span id="wind-speed">
                         7
                     </span> <span id="wind-unit"> mph </span>
-                        
+                    
                 </div>
             </div>
         </div>
+
+        
+        <div class="row justify-content-center todays-forecast">
+            <div class="col-9 current-temperature">
+                <img src="" alt="" id="weather-icon">
+                <p id="temp-number">
+                    42 
+                </p>
+                <sup id="units"> 
+                    <a href="#" id="farenheit" class="active">
+                        °F 
+                </a> | 
+                <a href="#" id="celsius">
+                    °C
+                </a>
+            </sup>
+        </div>
+    </div>
+
+
 
             <div class="container">
                 <div class="row days">
